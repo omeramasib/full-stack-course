@@ -33,7 +33,6 @@ class Product(models.Model):
         YEN = ('JPY', _('Yen'))
         AUSTRALIAN_DOLLAR = ('AUD', _('Australian Dollar'))
 
-    name = models.CharField(max_length=512)
     title = models.CharField(max_length=512)
     subtitle = models.CharField(max_length=512)
     maker = models.ForeignKey(
@@ -53,8 +52,8 @@ class Product(models.Model):
     )
 
     variation_products_ids = PostgresFields.ArrayField(
-        models.IntegerField(null=True, blank=True),
+        models.IntegerField(null=True, blank=True)
     )
 
     def __str__(self):
-        return f"{self.name} - {self.title} - {self.maker}"
+        return f"{self.title} - {self.subtitle} - {self.maker}"
